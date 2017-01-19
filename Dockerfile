@@ -37,8 +37,11 @@ RUN pecl config-set php_ini /etc/php/7.0/apache2/php.ini \
     &&  echo "extension=/usr/lib/php/20151012/sqlsrv.so" >> /etc/php/7.0/apache2/php.ini \
     && 	echo "extension=/usr/lib/php/20151012/pdo_sqlsrv.so" >> /etc/php/7.0/apache2/php.ini \
     && 	echo "extension=/usr/lib/php/20151012/sqlsrv.so" >> /etc/php/7.0/cli/php.ini \
-    && 	echo "extension=/usr/lib/php/20151012/pdo_sqlsrv.so" >> /etc/php/7.0/cli/php.ini
-
+    && 	echo "extension=/usr/lib/php/20151012/pdo_sqlsrv.so" >> /etc/php/7.0/cli/php.ini \
+    &&  echo "default_charset = \"\";" >> /etc/php/7.0/cli/php.ini \
+    &&  echo "default_charset = \"\";" >> /etc/php/7.0/apache2/php.ini \
+    &&  echo "mssql.charset = \"\";" >> /etc/php/7.0/cli/php.ini \
+    &&  echo "mssql.charset = \"\";" >> /etc/php/7.0/apache2/php.ini 
 RUN a2enmod php7.0 
 RUN apt-get install -y locales \
     && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
